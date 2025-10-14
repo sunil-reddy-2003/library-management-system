@@ -11,7 +11,7 @@ import java.util.List;
 public class Book {
 
     @Id
-    @Column
+    @Column(name = "book_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -23,6 +23,19 @@ public class Book {
 
     @Column(name="published_date",nullable = false)
     private String publishedDate;
+
+    @Column(nullable = false)
+    private int pages;
+
+    @Column(nullable = false)
+    private boolean availability;
+
+    @Column(nullable = false)
+    @Enumerated(value = EnumType.STRING)
+    private Category category;
+
+    @Column(nullable = false)
+    private String rack_no;
 
 
     @JoinColumn
@@ -101,18 +114,27 @@ public class Book {
         this.rack_no = rack_no;
     }
 
-    @Column(nullable = false)
-    private int pages;
+    public Author getAuthor() {
+        return author;
+    }
 
-    @Column(nullable = false)
-    private boolean availability;
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
 
-    @Column(nullable = false)
-    @Enumerated(value = EnumType.STRING)
-    private Category category;
+    public Card getCard() {
+        return card;
+    }
 
-    @Column(nullable = false)
-    private String rack_no;
+    public void setCard(Card card) {
+        this.card = card;
+    }
 
+    public List<Transaction> getTransactionList() {
+        return transactionList;
+    }
 
+    public void setTransactionList(List<Transaction> transactionList) {
+        this.transactionList = transactionList;
+    }
 }

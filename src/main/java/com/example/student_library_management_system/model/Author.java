@@ -9,7 +9,7 @@ import java.util.List;
 public class Author {
 
     @Id
-    @Column
+    @Column(name = "card_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -77,5 +77,13 @@ public class Author {
 
     public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public List<Book> getBooksWrittenByAuthor() {
+        return booksWrittenByAuthor;
+    }
+
+    public void setBooksWrittenByAuthor(List<Book> booksWrittenByAuthor) {
+        this.booksWrittenByAuthor = booksWrittenByAuthor;
     }
 }

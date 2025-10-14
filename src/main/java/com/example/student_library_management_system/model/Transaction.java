@@ -11,7 +11,7 @@ import java.util.Date;
 public class Transaction {
 
     @Id
-    @Column
+    @Column(name = "transaction_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -65,5 +65,21 @@ public class Transaction {
 
     public void setTransactionType(TransactionType transactionType) {
         this.transactionType = transactionType;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
     }
 }

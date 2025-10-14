@@ -13,7 +13,7 @@ import java.util.List;
 public class Card {
 
     @Id
-    @Column
+    @Column(name = "card_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -82,5 +82,27 @@ public class Card {
         this.updateDate = updateDate;
     }
 
+    public Student getStudent() {
+        return student;
+    }
 
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public List<Book> getBooksOfCard() {
+        return booksOfCard;
+    }
+
+    public void setBooksOfCard(List<Book> booksOfCard) {
+        this.booksOfCard = booksOfCard;
+    }
+
+    public List<Transaction> getTransactionsList() {
+        return transactionsList;
+    }
+
+    public void setTransactionsList(List<Transaction> transactionsList) {
+        this.transactionsList = transactionsList;
+    }
 }
