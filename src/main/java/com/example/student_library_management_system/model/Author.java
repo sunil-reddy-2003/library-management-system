@@ -9,7 +9,7 @@ import java.util.List;
 public class Author {
 
     @Id
-    @Column(name = "card_id")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 

@@ -13,7 +13,7 @@ import java.util.List;
 public class Card {
 
     @Id
-    @Column(name = "card_id")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
