@@ -23,7 +23,14 @@ public class StudentController {
 
     @GetMapping("/find/{id}")
     public Student findStudentById(@PathVariable int id){
-        return studentService.findStudentById(id);
+        try {
+            return studentService.findStudentById(id);
+        }
+        catch (Exception e){
+            System.out.println("exception occurred: "+e.getMessage());
+            throw new RuntimeException("Student not found");
+        }
+
 
         //response dto is used to send the required response only.
         //to return a particular attribute we can create response dto's and return it.

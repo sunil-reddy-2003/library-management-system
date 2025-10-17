@@ -38,7 +38,7 @@ public class StudentService {
         if(studentRepository.findById(id).isPresent()){
             return studentRepository.findById(id).get();
         }else {
-            return null;
+            throw  new RuntimeException("student not found");
         }
     }
 
