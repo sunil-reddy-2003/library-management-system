@@ -62,4 +62,9 @@ public class StudentController {
         return studentService.getAllStudentsUsingPage(pageNo,pageSize);
     }
 
+    @GetMapping("/findByEmail")
+    public Student findStudentByEmail(@RequestParam String email){
+        return studentService.findStudentByEmail(email);
+    }
+
 }

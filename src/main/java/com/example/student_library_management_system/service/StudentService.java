@@ -85,4 +85,9 @@ public class StudentService {
         return studentRepository.findAll(PageRequest.of(pageNo,pageSize, Sort.by("name").ascending())).getContent();
 
     }
+
+
+    public Student findStudentByEmail(String email){
+        return studentRepository.getStudentByEmail(email);
+    }
 }
