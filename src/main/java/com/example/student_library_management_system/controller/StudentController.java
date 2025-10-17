@@ -50,4 +50,9 @@ public class StudentController {
         return studentService.deleteStudent(id);
     }
 
+    @GetMapping("/page")
+    public List<Student> getAllStudentsUsingPagination(@RequestParam int pageNo, @RequestParam int pageSize){
+        return studentService.getAllStudentsUsingPage(pageNo,pageSize);
+    }
+
 }

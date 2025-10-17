@@ -7,6 +7,8 @@ import com.example.student_library_management_system.model.Student;
 import com.example.student_library_management_system.repository.StudentRepository;
 import com.example.student_library_management_system.requestdto.StudentRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -68,5 +70,19 @@ public class StudentService {
         }else {
             return "student not found";
         }
+    }
+
+                                   //just pagination
+
+//    public List<Student> getAllStudentsUsingPage(int pageNo, int pageSize){
+//        return studentRepository.findAll(PageRequest.of(pageNo,pageSize)).getContent();
+////        return studentRepository.findAll(PageRequest.of(0,3)).getContent(); //parameters can be constant too
+//
+//    }
+
+                                    //pagination using sorting
+    public List<Student> getAllStudentsUsingPage(int pageNo, int pageSize){
+        return studentRepository.findAll(PageRequest.of(pageNo,pageSize, Sort.by("name").ascending())).getContent();
+
     }
 }
