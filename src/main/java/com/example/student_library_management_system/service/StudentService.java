@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class StudentService {
@@ -29,5 +30,43 @@ public class StudentService {
         student.setCard(card);
         studentRepository.save(student);
         return "Student saved successfully";
+    }
+    
+    public Student findStudentById(int id){
+        if(studentRepository.findById(id).isPresent()){
+            return studentRepository.findById(id).get();
+        }else {
+            return null;
+        }
+    }
+
+    public List<Student> findAllStudents(){
+        return studentRepository.findAll();
+    }
+
+    public String updateStudent(int id,StudentRequestDto newStudentRequestDto){
+        Student existingStudent=findStudentById(id);
+        if(existingStudent!=null){
+            existingStudent.setEmail(newStudentRequestDto.getEmail());
+            existingStudent.setAddress(newStudentRequestDto.getAddress());
+            studentRepository.save(existingStudent);
+            return "student details updated";
+        }else {
+            return "student not found in database";
+        }
+    }
+
+    public String countStudents(){
+        return "total no. of students: "+studentRepository.count();
+    }
+
+    public String deleteStudent(int id) {
+        Student student=findStudentById(id);
+        if(student!=null){
+            studentRepository.deleteById(id);
+            return "student deleted successfully";
+        }else {
+            return "student not found";
+        }
     }
 }
