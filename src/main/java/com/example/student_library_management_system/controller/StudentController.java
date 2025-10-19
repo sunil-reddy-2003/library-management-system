@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+//@Controller+@ResponseBody=@RestController
 @RequestMapping("/student/apis")
 public class StudentController {
 
